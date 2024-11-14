@@ -23,12 +23,14 @@ public class Project extends PanacheEntity {
 
     @Column(nullable = false)
     public String name;
+
     @ManyToOne(optional = false)
     public User user;
+
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
     public ZonedDateTime created;
+
     @Version
     public int version;
-
 }
