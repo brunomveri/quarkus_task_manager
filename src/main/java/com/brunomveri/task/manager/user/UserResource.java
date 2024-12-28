@@ -3,6 +3,7 @@ package com.brunomveri.task.manager.user;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -34,6 +35,12 @@ public class UserResource {
         return userService.findById(id);
     }
 
+    @GET
+    @Path("self")
+    public Uni<User> getCurrentUser() {
+        return userService.getCurrentUser();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @ResponseStatus(201)
@@ -47,5 +54,11 @@ public class UserResource {
     public Uni<User> update(@PathParam("id") long id, User user) {
         user.id = id;
         return userService.update(user);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Uni<Void> delete(@PathParam("id") long id) {
+        return userService.delete(id);
     }
 }
