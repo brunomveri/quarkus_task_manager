@@ -33,7 +33,7 @@ public class User extends PanacheEntity {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns =
-    @JoinColumn(name = "id"))
+      @JoinColumn(name = "id"))
     @Column(name = "role")
     public List<String> roles;
 }
