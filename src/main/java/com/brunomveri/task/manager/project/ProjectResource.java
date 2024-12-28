@@ -38,14 +38,14 @@ public class ProjectResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{id}")
+    @Path("/{id}")
     public Uni<Project> update(@PathParam("id") long id, Project project) {
         project.id = id;
         return projectService.update(project);
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     public Uni<Void> delete(@PathParam("id") long id) {
         return projectService.delete(id);
     }
