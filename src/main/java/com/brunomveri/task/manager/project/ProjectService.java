@@ -49,7 +49,8 @@ public class ProjectService {
     @Transactional
     public Uni<Project> update(Project project) {
         return findById(project.id)
-                .chain(Project::getSession)
+                .chain(p -> Project.getSession())
+//                .chain(Project::getSession)
                 .chain(session -> session.merge(project));
     }
 
